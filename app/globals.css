@@ -1,4 +1,111 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@import 'tailwindcss';
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: 'quran-theme';
+  default: true; /* set as default */
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: #fdfbf7; /* paper-like white background */
+  --color-base-200: #e8e2d0; /* subtle beige */
+  --color-base-300: #dcd6c1; /* slightly darker beige */
+  --color-base-content: #2c2c2c; /* dark text */
+
+  --color-primary: #006a4e; /* deep green */
+  --color-primary-content: #fdfbf7; /* text on green */
+
+  --color-secondary: #1fa463; /* accent green */
+  --color-secondary-content: #fdfbf7; /* text on accent */
+
+  --color-accent: #d4af37; /* golden */
+  --color-accent-content: #2c2c2c; /* text on golden */
+
+  --color-neutral: #2c2c2c; /* dark neutral */
+  --color-neutral-content: #fdfbf7; /* text on dark */
+
+  --color-info: #1d9bf0; /* calm blue */
+  --color-info-content: #fdfbf7;
+
+  --color-success: #22c55e; /* green success */
+  --color-success-content: #fdfbf7;
+
+  --color-warning: #f1c40f; /* soft golden warning */
+  --color-warning-content: #2c2c2c;
+
+  --color-error: #dc2626; /* red error */
+  --color-error-content: #fdfbf7;
+
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* border size */
+  --border: 1px;
+
+  /* effects */
+  --depth: 1;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: 'quran-theme-dark';
+  default: false; /* not default, user can toggle */
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #0d0d0d; /* main dark background */
+  --color-base-200: #1a1a1a; /* slightly lighter panels */
+  --color-base-300: #262626; /* borders, muted sections */
+  --color-base-content: #fdfbf7; /* readable light text */
+
+  --color-primary: #1fa463; /* bright green accent */
+  --color-primary-content: #fdfbf7;
+
+  --color-secondary: #006a4e; /* deep Islamic green */
+  --color-secondary-content: #fdfbf7;
+
+  --color-accent: #d4af37; /* golden highlight */
+  --color-accent-content: #0d0d0d;
+
+  --color-neutral: #333333; /* neutral gray */
+  --color-neutral-content: #fdfbf7;
+
+  --color-info: #3b82f6; /* info blue */
+  --color-info-content: #fdfbf7;
+
+  --color-success: #22c55e; /* green success */
+  --color-success-content: #0d0d0d;
+
+  --color-warning: #f1c40f; /* golden warning */
+  --color-warning-content: #0d0d0d;
+
+  --color-error: #ef4444; /* red error */
+  --color-error-content: #fdfbf7;
+
+  /* border radius */
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* border size */
+  --border: 1px;
+
+  /* effects */
+  --depth: 1;
+  --noise: 0;
+}
 
 :root {
   --background: #ffffff;
