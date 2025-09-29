@@ -1,9 +1,14 @@
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 bg-accent/80">
+    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 bg-gradient-to-br from-accent/100 to-accent/60">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1 className="text-4xl text-primary">Welcome to Al-Quran App!</h1>
-        <p className='text-xl text-secondary'>This project is under construction. Please be patient untill it is completed.</p>
+        <h1 className="text-4xl text-primary font-bold">
+          Welcome to Al-Quran App!
+        </h1>
+        <p className="text-xl text-secondary">
+          This project is under construction. Please be patient untill it is
+          completed.
+        </p>
       </main>
     </div>
   );

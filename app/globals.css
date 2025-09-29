@@ -1,10 +1,10 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui";
 
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui";
 @plugin "daisyui/theme" {
-  name: 'quran-theme';
+  name: "quran-theme";
   default: true; /* set as default */
   prefersdark: false;
   color-scheme: light;
@@ -56,7 +56,7 @@
 }
 
 @plugin "daisyui/theme" {
-  name: 'quran-theme-dark';
+  name: "quran-theme-dark";
   default: false; /* not default, user can toggle */
   prefersdark: true;
   color-scheme: dark;
