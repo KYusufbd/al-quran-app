@@ -1,8 +1,6 @@
 import connectToMongodb from "./connectToMongodb";
-import getSurahInfo from "./getSurahInfo";
 
-const getVerses = async (surah) => {
-  const { surah_start, ayah_count } = await getSurahInfo(surah);
+const getVerses = async (surah_start, ayah_count) => {
   const db = await connectToMongodb();
   const cursor = db?.collection("verses");
   const verses = await cursor
