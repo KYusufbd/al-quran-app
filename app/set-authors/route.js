@@ -1,7 +1,7 @@
 export async function POST(request) {
   const { auths } = await request.json();
 
-  return Response.json(
+  return new Response(
     { auths },
     {
       status: 200,
