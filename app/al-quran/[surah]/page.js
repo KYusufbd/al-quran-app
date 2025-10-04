@@ -5,21 +5,21 @@ import getVerses from "@/app/lib/getVerses";
 export default async function Surah({ params }) {
   const { surah } = await params;
   const authors = {
-    bn_ah_bayan: "আহসানুল বায়ান",
-    bn_fazlur_rah: "ফজলুর রহমান",
-    bn_m_khan: "মুহিউদ্দীন খান",
-    bn_mujibur_rah: "মুজিবুর রহমান",
-    bn_taisir: "তাইসীরুল কুরআন",
-    bn_ab_zakariya: "আবু বকর মুহাম্মাদ যাকারিয়া",
-    en_clear_quran: "The Clear Quran",
-    en_a_haleem: "Abdul Haleem",
-    en_jalalain: "Jalalayn",
-    en_khan_hilali: "Khan and Hilali",
-    en_taqi_usmani: "Taqi Usmani",
-    en_pickthall: "Muhammad Marmaduke Pickthall",
-    en_sahih_int: "Saheeh International",
-    en_transliteration: "Transliteration",
-    en_yusuf_ali: "Yusuf Ali",
+    bn_ah_bayan: "আহসানুল বায়ান", // 1
+    bn_fazlur_rah: "ফজলুর রহমান", // 2
+    bn_m_khan: "মুহিউদ্দীন খান", // 3
+    bn_mujibur_rah: "মুজিবুর রহমান", // 4
+    bn_taisir: "তাইসীরুল কুরআন", // 5
+    bn_ab_zakariya: "আবু বকর মুহাম্মাদ যাকারিয়া", // 6
+    en_clear_quran: "The Clear Quran", // 7
+    en_a_haleem: "Abdul Haleem", // 8
+    en_jalalain: "Jalalayn", // 9
+    en_khan_hilali: "Khan and Hilali", // 10
+    en_taqi_usmani: "Taqi Usmani", // 11
+    en_pickthall: "Muhammad Marmaduke Pickthall", // 12
+    en_sahih_int: "Saheeh International", // 13
+    en_transliteration: "Transliteration", // 14
+    en_yusuf_ali: "Yusuf Ali", // 15
   };
 
   const authNumbers = [1, 5, 7, 12];
@@ -37,9 +37,9 @@ export default async function Surah({ params }) {
     const translations = await getTranslations(surah_start, ayah_count, auth);
 
     return (
-      <div className="font-sans flex flex-col items-center min-h-screen px-8 pb-8 gap-16 bg-gradient-to-br from-accent/40 to-accent/30">
+      <div className="font-sans flex flex-col items-center min-h-screen px-8 pb-8 gap-16 bg-base-100">
         <main className="flex flex-col gap-4 w-160 max-w-full items-center text-center">
-          <div className="flex flex-col gap-2 w-full items-center bg-primary/30 p-6 rounded-tr-4xl rounded-bl-4xl text-primary-content">
+          <div className="flex flex-col gap-2 w-full items-center bg-primary/60 p-6 rounded-tr-4xl rounded-bl-4xl text-primary-content">
             <h1 className="text-4xl font-bold">سُوْرَة {name_ar}</h1>
             <div className="flex flex-row justify-between gap-4 flex-wrap text-xl">
               <p>{`${surah}. Surah ${name_en}.`}</p>
