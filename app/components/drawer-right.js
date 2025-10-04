@@ -15,7 +15,7 @@ const DrawerRight = () => {
 
   const updateAuths = async () => {
     if (auths.length) {
-      await fetch('http://localhost:3000/preference', {
+      await fetch('http://localhost:3000/set-authors', {
         method: 'POST',
         body: JSON.stringify({ auths: auths }),
       })
