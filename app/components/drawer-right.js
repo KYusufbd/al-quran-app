@@ -10,10 +10,18 @@ const DrawerRight = () => {
     fetch('https://al-quran-app-blond.vercel.app/get-selected-authors', {
       credentials: 'include',
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          res.json();
+        } else {
+          return;
+        }
+      })
       .then((data) => {
-        for (const id of data) {
-          document.getElementById(id).checked = true;
+        if (data) {
+          for (const id of data) {
+            document.getElementById(id).checked = true;
+          }
         }
       });
   }, []);

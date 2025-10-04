@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const uri = process.env.MONGODB_URI;
 let client;
@@ -18,9 +18,7 @@ async function connectToMongodb() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
-    db = client.db("al_quran");
-
-    console.log();
+    db = client.db('al_quran');
   } catch {
     (err) => console.log(err);
   }
