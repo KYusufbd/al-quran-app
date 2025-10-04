@@ -37,11 +37,11 @@ export default async function Surah({ params }) {
     const translations = await getTranslations(surah_start, ayah_count, auth);
 
     return (
-      <div className="font-sans flex flex-col items-center min-h-screen p-8 gap-16 bg-gradient-to-br from-accent/100 to-accent/60">
+      <div className="font-sans flex flex-col items-center min-h-screen px-8 pb-8 gap-16 bg-gradient-to-br from-accent/40 to-accent/30">
         <main className="flex flex-col gap-4 w-160 max-w-full items-center text-center">
-          <div className="flex flex-col gap-2 w-full items-center bg-primary/30 p-6 rounded-tr-4xl rounded-bl-4xl text-primary-content/70">
+          <div className="flex flex-col gap-2 w-full items-center bg-primary/30 p-6 rounded-tr-4xl rounded-bl-4xl text-primary-content">
             <h1 className="text-4xl font-bold">سُوْرَة {name_ar}</h1>
-            <div className="flex flex-row justify-between gap-4 flex-wrap text-2xl">
+            <div className="flex flex-row justify-between gap-4 flex-wrap text-xl">
               <p>{`${surah}. Surah ${name_en}.`}</p>
               <p>Total ayah: {ayah_count}</p>
             </div>
