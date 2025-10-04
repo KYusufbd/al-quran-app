@@ -6,5 +6,5 @@ export async function GET() {
   const { value } = await cookieStore.get('auths');
   const valueArr = JSON.parse(value);
 
-  return new Response(JSON.stringify({ valueArr }));
+  return new Response(JSON.stringify(valueArr));
 }
