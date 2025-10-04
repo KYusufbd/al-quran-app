@@ -1,10 +1,10 @@
-import React from 'react';
-import getSurahList from '../lib/getSurahList';
-import Link from 'next/link';
+import React from "react";
+import getSurahList from "../lib/getSurahList";
+import Link from "next/link";
 
 const AlQuranPage = async () => {
-  const surahNamesAr = await getSurahList('ar');
-  const surahNamesEn = await getSurahList('en');
+  const surahNamesAr = await getSurahList("ar");
+  const surahNamesEn = await getSurahList("en");
 
   return (
     <div className="flex flex-col w-full bg-base-300">

@@ -5,7 +5,7 @@ export async function POST(request) {
     { auths },
     {
       status: 200,
-      headers: { 'Set-Cookie': `auths=${JSON.stringify(auths)}` },
-    }
+      headers: { "Set-Cookie": `auths=${JSON.stringify(auths)}` },
+    },
   );
 }

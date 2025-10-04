@@ -45,7 +45,7 @@ const Navbar = () => {
   );
 
   ScrollToTop();
-  
+
   return (
     <div className="navbar bg-base-300/50 backdrop-blur-md fixed shadow-sm">
       <div className="navbar-start">

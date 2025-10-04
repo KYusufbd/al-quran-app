@@ -1,6 +1,7 @@
 import getSurahInfo from "@/app/lib/getSurahInfo";
 import getTranslations from "@/app/lib/getTranslations";
 import getVerses from "@/app/lib/getVerses";
+import { cookies } from "next/headers";
 
 export default async function Surah({ params }) {
   const { surah } = await params;
@@ -22,12 +23,14 @@ export default async function Surah({ params }) {
     en_yusuf_ali: "Yusuf Ali", // 15
   };
 
-  const authNumbers = [1, 5, 7, 12];
+  const cookieStore = await cookies();
+  const { value } = cookieStore.get("auths");
+  const authNumbers = JSON.parse(value);
 
   const auth = [];
   const keys = Object.keys(authors);
   await authNumbers.map((num) => {
-    auth.push(keys[num]);
+    auth.push(keys[num - 1]);
   });
 
   if (surah < 115 && surah > 0) {

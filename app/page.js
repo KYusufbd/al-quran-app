@@ -10,7 +10,12 @@ export default function Home() {
         <p className="text-2xl text-secondary">
           Al-Quran project by Sunnah Today team.
         </p>
-        <Link href='/al-quran' className="btn btn-secondary rounded-md text-xl mt-6">Read Al-Quran</Link>
+        <Link
+          href="/al-quran"
+          className="btn btn-secondary rounded-md text-xl mt-6"
+        >
+          Read Al-Quran
+        </Link>
       </main>
     </div>
   );
