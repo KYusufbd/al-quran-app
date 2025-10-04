@@ -1,31 +1,48 @@
-"use client";
-import { LuSettings2 } from "react-icons/lu";
+'use client';
+
+import { useState } from 'react';
+import { LuSettings2 } from 'react-icons/lu';
 
 const DrawerRight = () => {
+  const [auths, setAuths] = useState([]);
+
+  const selectAuths = () => {
+    const formElement = document.getElementById('translations');
+    const formData = new FormData(formElement);
+
+    setAuths(formData.getAll('auth'));
+  };
+
+  const updateAuths = async () => {
+    if (auths.length) {
+      await fetch('http://localhost:3000/preference', {
+        method: 'POST',
+        body: JSON.stringify({ auths: auths }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+      console.log('Updated auths');
+      setAuths([]);
+    }
+  };
+
+  console.log('Auths:', auths); // Testing purpose
+
   return (
     <div className="drawer drawer-end">
-      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" onChange={updateAuths} />
       <div className="drawer-content">
         {/* Page content here */}
-        <label
-          htmlFor="my-drawer-4"
-          className="drawer-button btn btn-ghost btn-circle"
-        >
+        <label htmlFor="my-drawer-4" className="drawer-button btn btn-ghost btn-circle">
           <LuSettings2 className="text-xl" />
         </label>
       </div>
       <div className="drawer-side">
-        <label
-          htmlFor="my-drawer-4"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
+        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 flex flex-col gap-4">
           {/* Sidebar content here */}
           <details>
-            <summary className="cursor-pointer btn w-full text-xl btn-secondary">
-              Select Script
-            </summary>
+            <summary className="cursor-pointer btn w-full text-xl btn-secondary">Select Script</summary>
             <div className="flex flex-col gap-1">
               <select className="text-lg py-2 px-2 text-primary">
                 <option>Indo Pak</option>
@@ -34,67 +51,69 @@ const DrawerRight = () => {
             </div>
           </details>
           <details>
-            <summary className="cursor-pointer btn w-full text-xl btn-secondary">
-              Select Translations
-            </summary>
-            <div className="flex flex-col gap-1">
+            <summary className="cursor-pointer btn w-full text-xl btn-secondary">Select Translations</summary>
+            <form id="translations" onChange={selectAuths} className="flex flex-col gap-1">
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">আহসানুল বায়ান</i>
+                <input type="checkbox" name="auth" value={1} className="w-6" />
+                <label className="text-lg">আহসানুল বায়ান</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">ফজলুর রহমান</i>
+                <input type="checkbox" className="w-6" name="auth" value={2} />
+                <label className="text-lg">ফজলুর রহমান</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">মুহিউদ্দীন খান</i>
+                <input type="checkbox" className="w-6" name="auth" value={3} />
+                <label className="text-lg">মুহিউদ্দীন খান</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">মুজিবুর রহমান</i>
+                <input type="checkbox" className="w-6" name="auth" value={4} />
+                <label className="text-lg">মুজিবুর রহমান</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">তাইসীরুল কুরআন</i>
+                <input type="checkbox" className="w-6" name="auth" value={5} />
+                <label className="text-lg">তাইসীরুল কুরআন</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">আবু বকর মুহাম্মাদ যাকারিয়া</i>
+                <input type="checkbox" className="w-6" name="auth" value={6} />
+                <label className="text-lg">আবু বকর মুহাম্মাদ যাকারিয়া</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">The Clear Quran</i>
+                <input type="checkbox" className="w-6" name="auth" value={7} />
+                <label className="text-lg">The Clear Quran</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">Abdul Haleem</i>
+                <input type="checkbox" className="w-6" name="auth" value={8} />
+                <label className="text-lg">Abdul Haleem</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">Jalalayn</i>
+                <input type="checkbox" className="w-6" name="auth" value={9} />
+                <label className="text-lg">Jalalayn</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">Taqi Usmani</i>
+                <input type="checkbox" className="w-6" name="auth" value={10} />
+                <label className="text-lg">Khan And Hilali</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">Muhammad Marmaduke Pickthall</i>
+                <input type="checkbox" className="w-6" name="auth" value={11} />
+                <label className="text-lg">Taqi Usmani</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">Saheeh International</i>
+                <input type="checkbox" className="w-6" name="auth" value={12} />
+                <label className="text-lg">Muhammad Marmaduke Pickthall</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">Transliteration</i>
+                <input type="checkbox" className="w-6" name="auth" value={13} />
+                <label className="text-lg">Saheeh International</label>
               </div>
               <div className="flex flex-row gap-2 py-2">
-                <input type="checkbox" className="w-6" />
-                <i className="text-lg">Yusuf Ali</i>
+                <input type="checkbox" className="w-6" name="auth" value={14} />
+                <label className="text-lg">Transliteration</label>
               </div>
-            </div>
+              <div className="flex flex-row gap-2 py-2">
+                <input type="checkbox" className="w-6" name="auth" value={15} />
+                <label className="text-lg">Yusuf Ali</label>
+              </div>
+            </form>
           </details>
         </ul>
       </div>
