@@ -7,7 +7,7 @@ const DrawerRight = () => {
   const [auths, setAuths] = useState([]);
 
   useEffect(() => {
-    fetch('/get-selected-authors', {
+    fetch('/api/get-selected-authors', {
       credentials: 'include',
     })
       .then((res) => {
@@ -31,7 +31,7 @@ const DrawerRight = () => {
 
   const updateAuths = async () => {
     if (auths.length) {
-      await fetch('/set-authors', {
+      await fetch('/api/set-authors', {
         method: 'POST',
         body: JSON.stringify({ auths: auths }),
       })
