@@ -3,12 +3,16 @@ import { cookies } from 'next/headers';
 export async function GET() {
   const cookieStore = await cookies();
 
-  const { value } = cookieStore.get('auths');
-  const valueArr = JSON.parse(value) || [];
+  const auths = cookieStore.get('auths');
+  const valueArr = auths?.value && (await JSON.parse(auths.value));
 
-  if (valueArr.length) {
-    return Response.json(valueArr, { status: 200 });
+  console.log(valueArr);
+
+  if (valueArr) {
+    console.log('Cookie found!');
+    return Response.json(valueArr);
   } else {
-    return Renponse.json({ message: 'Authors not found!' });
+    console.log('Cookie not found!');
+    return Response.json({ message: 'Previously selected authors not found!' });
   }
 }

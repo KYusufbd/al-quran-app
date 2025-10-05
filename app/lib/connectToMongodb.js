@@ -5,6 +5,7 @@ let client;
 let db;
 
 export default async function connectToMongodb() {
+  console.log('Started connection to MondoDB!');
   if (db) return db;
   // Create a MongoClient with a MongoClientOptions object to set the Stable API version
   client = new MongoClient(uri, {
@@ -16,7 +17,9 @@ export default async function connectToMongodb() {
   });
   try {
     // Connect the client to the server	(optional starting in v4.7)
+    console.log('Trying to connect.');
     await client.connect();
+    console.log('Connected to MongoDB!');
 
     db = client.db('al_quran');
     return db;

@@ -1,10 +1,10 @@
-import React from "react";
-import getSurahList from "../lib/getSurahList";
-import Link from "next/link";
+import React from 'react';
+import getSurahList from '../lib/getSurahList';
+import Link from 'next/link';
 
 const AlQuranPage = async () => {
-  const surahNamesAr = await getSurahList("ar");
-  const surahNamesEn = await getSurahList("en");
+  const surahNamesAr = await getSurahList('ar');
+  const surahNamesEn = await getSurahList('en');
 
   return (
     <div className="flex flex-col w-full bg-base-300">
@@ -18,7 +18,7 @@ const AlQuranPage = async () => {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 w-240 max-w-full mx-auto p-4">
         {surahNamesAr.map((name, index) => {
           return (
-            <Link key={index} href={`/al-quran/${index + 1}`}>
+            <Link key={index} href={`/al-quran/${index + 1}`} prefetch={false}>
               <div className="w-full flex flex-col text-center justify-start items-center p-3 rounded-lg shadow-xl h-52 gap-3 bg-primary-content/80 text-primary font-bold">
                 <h3 className="text-base mb-3">{index + 1}</h3>
                 <h3 className="text-2xl">{name}</h3>

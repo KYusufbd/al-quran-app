@@ -10,11 +10,10 @@ const DrawerRight = () => {
     fetch('/api/get-selected-authors', {
       credentials: 'include',
     })
-      .then((res) => {
-        res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
-        if (data) {
+        console.log(data);
+        if (data.length) {
           for (const id of data) {
             document.getElementById(id).checked = true;
           }
