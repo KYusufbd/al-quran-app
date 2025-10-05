@@ -6,10 +6,7 @@ export async function GET() {
   const auths = cookieStore.get('auths');
   const valueArr = auths?.value && (await JSON.parse(auths.value));
 
-  console.log(valueArr);
-
   if (valueArr) {
-    console.log('Cookie found!');
     return Response.json(valueArr);
   } else {
     console.log('Cookie not found!');
