@@ -7,15 +7,11 @@ const DrawerRight = () => {
   const [auths, setAuths] = useState([]);
 
   useEffect(() => {
-    fetch('https://al-quran-app-blond.vercel.app/get-selected-authors', {
+    fetch('/get-selected-authors', {
       credentials: 'include',
     })
       .then((res) => {
-        if (res.status === 200) {
-          res.json();
-        } else {
-          return;
-        }
+        res.json();
       })
       .then((data) => {
         if (data) {
@@ -35,7 +31,7 @@ const DrawerRight = () => {
 
   const updateAuths = async () => {
     if (auths.length) {
-      await fetch('https://al-quran-app-blond.vercel.app/set-authors', {
+      await fetch('/set-authors', {
         method: 'POST',
         body: JSON.stringify({ auths: auths }),
       })

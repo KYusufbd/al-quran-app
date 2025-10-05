@@ -1,10 +1,10 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const uri = process.env.MONGODB_URI;
 let client;
 let db;
 
-async function connectToMongodb() {
+export default async function connectToMongodb() {
   if (db) return db;
   // Create a MongoClient with a MongoClientOptions object to set the Stable API version
   client = new MongoClient(uri, {
@@ -19,10 +19,9 @@ async function connectToMongodb() {
     await client.connect();
 
     db = client.db('al_quran');
+    return db;
   } catch {
     (err) => console.log(err);
+    throw err;
   }
-  return db;
 }
-
-module.exports = connectToMongodb;

@@ -24,13 +24,14 @@ export default async function Surah({ params }) {
   };
 
   const authNumbers = await getAuthNumbers();
+  const keys = Object.keys(authors);
 
   const auth = [];
-  const keys = Object.keys(authors);
-  authNumbers.length &&
-    (await authNumbers.map((num) => {
+  if (authNumbers.length) {
+    await authNumbers.map((num) => {
       auth.push(keys[num - 1]);
-    }));
+    });
+  }
 
   if (surah < 115 && surah > 0) {
     const { name_en, name_ar, name_bn, surah_start, ayah_count } = await getSurahInfo(surah);
