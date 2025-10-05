@@ -25,12 +25,9 @@ export default async function Surah({ params }) {
   const keys = Object.keys(authors);
 
   const cookieStore = await cookies();
-  console.log(cookieStore);
   const auths = cookieStore.get('auths');
-  console.log(auths);
   const authNumbers = auths?.value ? await JSON.parse(auths.value) : [];
 
-  console.log(authNumbers);
 
   const auth = [];
   await authNumbers.map((num) => {

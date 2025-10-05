@@ -12,7 +12,6 @@ const DrawerRight = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.length) {
           for (const id of data) {
             document.getElementById(id).checked = true;
