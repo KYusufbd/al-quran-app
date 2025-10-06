@@ -9,7 +9,7 @@ const DrawerRight = () => {
   const [auths, setAuths] = useState(null);
   const pathName = usePathname();
 
-  const usePreselected = () => {
+  const getPreselected = () => {
     const surahDiv = document?.getElementById('surah');
     const auth = surahDiv?.getAttribute('auth');
     const scriptNo = surahDiv?.getAttribute('script_no');
@@ -49,7 +49,7 @@ const DrawerRight = () => {
 
   const updateSelections = async () => {
     setTimeout(() => {
-      usePreselected();
+      getPreselected();
     }, 100);
     if (auths) {
       await fetch('/api/set-authors', {
