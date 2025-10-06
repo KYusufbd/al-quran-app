@@ -42,13 +42,20 @@ export default async function Surah({ params }) {
     return (
       <div className="font-sans flex flex-col items-center min-h-screen px-8 pb-8 gap-16 bg-base-100">
         <main className="flex flex-col gap-4 w-160 max-w-full items-center text-center">
-          <div className="flex flex-col gap-2 w-full items-center bg-primary/60 p-6 rounded-tr-4xl rounded-bl-4xl text-primary-content">
+          <div className="text-accent font-bold flex flex-col items-center p-6 bg-accent-content/60 gap-2 w-full">
+            <h1 className="text-4xl font-bold">سُوْرَة {name_ar}</h1>
+            <div className="flex flex-row gap-4 flex-wrap">
+              <p>{`${surah}. Surah ${name_en}.`}</p>
+              <p>Total ayah: {ayah_count}</p>
+            </div>
+          </div>
+          {/* <div className="flex flex-col gap-2 w-full items-center bg-primary/60 p-6 rounded-tr-4xl rounded-bl-4xl text-primary-content">
             <h1 className="text-4xl font-bold">سُوْرَة {name_ar}</h1>
             <div className="flex flex-row justify-between gap-4 flex-wrap text-xl">
               <p>{`${surah}. Surah ${name_en}.`}</p>
               <p>Total ayah: {ayah_count}</p>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col gap-4">
             {verses.map((verse) => {
               const trans = translations[verses.indexOf(verse)];

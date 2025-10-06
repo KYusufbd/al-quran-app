@@ -8,7 +8,7 @@ const AlQuranPage = async () => {
 
   return (
     <div className="flex flex-col w-full bg-base-300">
-      <div className="text-accent font-bold flex flex-col items-center p-6 bg-accent-content/50 gap-2">
+      <div className="text-accent font-bold flex flex-col items-center p-6 bg-accent-content/60 gap-2">
         <h1 className="text-3xl">Al Quran</h1>
         <div className="flex flex-row gap-4 flex-wrap">
           <h3 className="text-lg">Total Surah: 114</h3>
