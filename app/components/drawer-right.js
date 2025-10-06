@@ -60,6 +60,7 @@ const DrawerRight = () => {
         .then((data) => console.log(data));
       console.log('Updated authors!');
       setAuths(null);
+      redirect(pathName);
     }
 
     if (script) {
@@ -70,9 +71,6 @@ const DrawerRight = () => {
         .then((res) => res.json())
         .then((data) => console.log(data));
       setScript(null);
-    }
-
-    if (auths || script) {
       redirect(pathName);
     }
   };

@@ -5,8 +5,7 @@
 @theme {
   --font-hafs: 'Hafs', sans-serif;
   --font-amiri: 'Amiri-Quran', sans-serif;
-  --font-hafs-usmani-1: 'Hafs-Usmani-1', sans-serif;
-  --font-hafs-usmani-2: 'Hafs-Usmani-2', sans-serif;
+  --font-hafs-usmani: 'Hafs-Usmani', sans-serif;
 }
 
 @plugin "daisyui";
@@ -131,10 +130,6 @@ body {
 }
 
 @font-face {
-  font-family: 'Hafs-Usmani-1';
-  src: url('/KfgqpcHafsUthmanicScriptRegular-1jGEe.ttf') format('trueType');
-}
-@font-face {
-  font-family: 'Hafs-Usmani-2';
-  src: url('../public/KfgqpcHafsUthmanicScriptRegular-nARZ1.ttf') format('trueType');
+  font-family: 'Hafs-Usmani';
+  src: url('/KFGQPC-Uthmanic-Script-HAFS-Regular.otf') format('trueType');
 }
