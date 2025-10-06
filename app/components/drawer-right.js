@@ -1,25 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { redirect, usePathname } from "next/navigation";
+import { useState } from "react";
 import { LuSettings2 } from "react-icons/lu";
 
 const DrawerRight = () => {
+  const [script, setScript] = useState(null);
   const [auths, setAuths] = useState(null);
+  const pathName = usePathname();
 
-  useEffect(() => {
-    fetch("/api/get-selected-authors", {
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.length) {
-          for (const id of data) {
-            document.getElementById(id).checked = true;
-          }
-        }
-      });
-  }, []);
+  const usePreselected = () => {
+    const surahDiv = document?.getElementById("surah");
+    const auth = surahDiv?.getAttribute("auth");
+    const scriptNo = surahDiv?.getAttribute("script_no");
+    const getAuthors = () => {
+      if (auth) {
+        return JSON.parse(auth);
+      }
+    };
 
+    const authors = getAuthors();
+    const drawer = document.getElementById("my-drawer-4");
+
+    if (authors && drawer.checked) {
+      for (let i = 1; i < 16; i++) {
+        const checkbox = document.getElementById(i.toString());
+        authors.includes(i.toString())
+          ? (checkbox.checked = true)
+          : (checkbox.checked = false);
+      }
+    }
+
+    if (scriptNo && drawer.checked) {
+      document
+        .getElementById(`scr_${scriptNo}`)
+        .setAttribute("selected", "selected");
+    }
+  };
+
+  const selectScript = () => {
+    const formElement = document.getElementById("script");
+    const formData = new FormData(formElement);
+    const scr = formData.get("script");
+    setScript(scr);
+  };
   const selectAuths = () => {
     const formElement = document.getElementById("translations");
     const formData = new FormData(formElement);
@@ -27,8 +51,11 @@ const DrawerRight = () => {
     setAuths(formData.getAll("auth"));
   };
 
-  const updateAuths = async () => {
-    if (auths !== null) {
+  const updateSelections = async () => {
+    setTimeout(() => {
+      usePreselected();
+    }, 100);
+    if (auths) {
       await fetch("/api/set-authors", {
         method: "POST",
         body: JSON.stringify({ auths: auths }),
@@ -37,7 +64,21 @@ const DrawerRight = () => {
         .then((data) => console.log(data));
       console.log("Updated authors!");
       setAuths(null);
-      window.location.reload();
+    }
+
+    if (script) {
+      await fetch("/api/set-script", {
+        method: "POST",
+        body: JSON.stringify({ script: script }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+      console.log("Updated Script!");
+      setScript(null);
+    }
+
+    if (auths || script) {
+      redirect(pathName);
     }
   };
 
@@ -47,7 +88,7 @@ const DrawerRight = () => {
         id="my-drawer-4"
         type="checkbox"
         className="drawer-toggle"
-        onChange={updateAuths}
+        onChange={updateSelections}
       />
       <div className="drawer-content">
         {/* Page content here */}
@@ -70,12 +111,20 @@ const DrawerRight = () => {
             <summary className="cursor-pointer btn w-full text-xl btn-secondary">
               Select Script
             </summary>
-            <div className="flex flex-col gap-1">
-              <select className="text-lg py-2 px-2 text-primary">
-                <option>Indo Pak</option>
-                <option>Usmani</option>
+            <form
+              id="script"
+              onChange={selectScript}
+              className="flex flex-col gap-1"
+            >
+              <select name="script" className="text-lg py-2 px-2 text-primary">
+                <option id="scr_1" value={[1]}>
+                  Uthmani
+                </option>
+                <option id="scr_2" value={[2]}>
+                  Indo Pak
+                </option>
               </select>
-            </div>
+            </form>
           </details>
           <details>
             <summary className="cursor-pointer btn w-full text-xl btn-secondary">
