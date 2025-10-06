@@ -83,7 +83,7 @@ export default async function Surah({ params }) {
                   <p className="text-accent text-center font-bold -mb-3 mx-auto -mt-4">
                     {ayah_no}
                   </p>
-                  <p className="text-3xl text-primary font-hafs leading-14 p-1 w-full rounded-xl bg-primary/20">
+                  <p className="text-3xl text-primary font-hafs-usmani-2 leading-14 p-1 w-full rounded-xl bg-primary/20">
                     {verse?.indo_pak || verse?.uthmani}
                   </p>
                   {auth.length ? (
