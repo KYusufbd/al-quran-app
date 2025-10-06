@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { LuSettings2 } from "react-icons/lu";
 
 const DrawerRight = () => {
-  const [auths, setAuths] = useState([]);
+  const [auths, setAuths] = useState(null);
 
   useEffect(() => {
     fetch("/api/get-selected-authors", {
@@ -28,7 +28,7 @@ const DrawerRight = () => {
   };
 
   const updateAuths = async () => {
-    if (auths.length) {
+    if (auths !== null) {
       await fetch("/api/set-authors", {
         method: "POST",
         body: JSON.stringify({ auths: auths }),
@@ -36,7 +36,7 @@ const DrawerRight = () => {
         .then((res) => res.json())
         .then((data) => console.log(data));
       console.log("Updated authors!");
-      setAuths([]);
+      setAuths(null);
       window.location.reload();
     }
   };
@@ -64,7 +64,7 @@ const DrawerRight = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 flex flex-col gap-4">
+        <ul className="menu bg-base-200 text-base-content min-h-full w-70 p-4 flex flex-col gap-4">
           {/* Sidebar content here */}
           <details>
             <summary className="cursor-pointer btn w-full text-xl btn-secondary">
