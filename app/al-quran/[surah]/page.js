@@ -27,7 +27,7 @@ export default async function Surah({ params }) {
   const cookieStore = await cookies();
   const script = cookieStore.get('script');
   const auths = cookieStore.get('auths');
-  const script_no = auths?.value ? await JSON.parse(script.value) : 2;
+  const script_no = script?.value ? await JSON.parse(script.value) : 2;
   const authNumbers = auths?.value ? await JSON.parse(auths.value) : [];
 
   const authors = [];
