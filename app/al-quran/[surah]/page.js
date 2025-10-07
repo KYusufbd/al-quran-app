@@ -5,7 +5,7 @@ import { cookies } from 'next/headers';
 
 export default async function Surah({ params }) {
   const { surah } = await params;
-  const authors = {
+  const author_list = {
     bn_ah_bayan: 'আহসানুল বায়ান', // 1
     bn_fazlur_rah: 'ফজলুর রহমান', // 2
     bn_m_khan: 'মুহিউদ্দীন খান', // 3
@@ -22,23 +22,23 @@ export default async function Surah({ params }) {
     en_transliteration: 'Transliteration', // 14
     en_yusuf_ali: 'Yusuf Ali', // 15
   };
-  const keys = Object.keys(authors);
+  const keys = Object.keys(author_list);
 
   const cookieStore = await cookies();
   const script = cookieStore.get('script');
   const auths = cookieStore.get('auths');
-  const script_no = auths?.value ? await JSON.parse(script.value) : 1;
-  const authNumbers = auths?.value ? await JSON.parse(auths.value) : [6, 11];
+  const script_no = auths?.value ? await JSON.parse(script.value) : 2;
+  const authNumbers = auths?.value ? await JSON.parse(auths.value) : [];
 
-  const auth = [];
+  const authors = [];
   await authNumbers.map((num) => {
-    auth.push(keys[num - 1]);
+    authors.push(keys[num - 1]);
   });
 
   if (surah < 115 && surah > 0) {
     const { name_en, name_ar, name_bn, surah_start, ayah_count } = await getSurahInfo(surah);
     const verses = await getVerses(surah_start, ayah_count, script_no);
-    const translations = await getTranslations(surah_start, ayah_count, auth);
+    const translations = await getTranslations(surah_start, ayah_count, authors);
 
     return (
       <div id="surah" script_no={script_no} auth={JSON.stringify(authNumbers)} className="font-sans flex flex-col items-center min-h-screen px-1 pb-8 gap-16 bg-base-100">
@@ -72,12 +72,12 @@ export default async function Surah({ params }) {
                   <p className={`text-3xl text-primary ${script_no == 1 ? 'font-amiri leading-18' : 'font-hafs leading-14'} p-1 w-full rounded-xl bg-primary/20`}>
                     {verse?.indo_pak || verse?.uthmani}
                   </p>
-                  {auth.length ? (
+                  {authors.length ? (
                     <div className="w-full text-start flex flex-col p-2 gap-4">
-                      {auth.map((au, index) => {
+                      {authors.map((au, index) => {
                         return (
                           <div className="w-full flex flex-col gap-1" key={index}>
-                            <h5 className="text-secondary">{authors[au]}</h5>
+                            <h5 className="text-secondary">{author_list[au]}</h5>
                             <p className="text-primary text-xl">{trans[au]}</p>
                           </div>
                         );
