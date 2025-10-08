@@ -42,7 +42,7 @@ export default async function Surah({ params }) {
 
     return (
       <div id="surah" script_no={script_no} auth={JSON.stringify(authNumbers)} className="font-sans flex flex-col items-center min-h-screen px-1 pb-8 gap-16 bg-base-100">
-        <main className="flex flex-col gap-4 w-160 max-w-full items-center text-center">
+        <main className="flex flex-col gap-2 w-160 max-w-full items-center text-center">
           <div className="text-accent font-bold flex flex-col items-center p-6 bg-primary rounded-sm gap-4 w-full">
             <h1 className="text-4xl font-amiri font-medium">سُوْرَةُ {name_ar}</h1>
             <div className="flex flex-row gap-4 flex-wrap">
@@ -50,19 +50,14 @@ export default async function Surah({ params }) {
               <p>Total ayah: {ayah_count}</p>
             </div>
           </div>
-
-          {/* 
-           Old banner is commented here:
-
-          <div className="flex flex-col gap-2 w-full items-center bg-primary/60 p-6 rounded-tr-4xl rounded-bl-4xl text-primary-content">
-            <h1 className="text-4xl font-bold">سُوْرَة {name_ar}</h1>
-            <div className="flex flex-row justify-between gap-4 flex-wrap text-xl">
-              <p>{`${surah}. Surah ${name_en}.`}</p>
-              <p>Total ayah: {ayah_count}</p>
-            </div>
-          </div> */}
-
           <div className="flex flex-col gap-1 w-full">
+            {surah != 1 && surah != 9 ? (
+              <p className={`text-3xl text-secondary ${script_no == 1 ? 'font-amiri p-1 pt-0 pb-3 leading-18' : 'font-hafs leading-14 p-1'}  w-full rounded-lg bg-secondary/40`}>
+                بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
+              </p>
+            ) : (
+              <></>
+            )}
             {verses.map((verse, index) => {
               const trans = translations[index];
               const ayah_no = verse.no - surah_start + 1;
